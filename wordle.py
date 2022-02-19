@@ -14,14 +14,15 @@ def wordle():
     wordOfTheDay = pickWordOfTheDay()
     allowedGuesses = 5
     while True:
+        if allowedGuesses == 0:
+            print("You have no guesses left :(")
+            break
+
         guess = input("Enter a 5-letter word (5 guesses): ").upper()
 
         if len(guess) != 5:
             print("Plesae enter a 5 letter word.")
             continue
-        if allowedGuesses == 0:
-            print("You have no guesses left :(")
-            break
         if not matchedLetters(guess, wordOfTheDay):
             allowedGuesses -= 1
             continue
