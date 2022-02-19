@@ -43,12 +43,12 @@ def matchedLetters(guess, wordOfTheDay):
     print("-------------")
     for i in range(len(wordOfTheDay)):
         if guess[i] == wordOfTheDay[i]:
-            print(f"{CBOLD}{CGREEN}{guess[i]}:{CEND} ", end="")
+            print(f"{CBOLD}{CGREEN}{guess[i]}{CEND} ", end="")
         elif guess[i] in wordOfTheDay:
-            print(f"{CBOLD}{CYELLOW}{guess[i]}:{CEND} ", end="")
+            print(f"{CBOLD}{CYELLOW}{guess[i]}{CEND} ", end="")
             isValid = False
         else:  # guess[i] not in wordOfTheDay
-            print(f"{CBOLD}{CGREY}{guess[i]}:{CEND} ", end="")
+            print(f"{CBOLD}{CGREY}{guess[i]}{CEND} ", end="")
             isValid = False
     print("\n-------------")
     return isValid
