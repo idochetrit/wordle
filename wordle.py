@@ -1,5 +1,8 @@
+import enum
+from os import path
 import csv
 from datetime import datetime
+from typing import Literal
 
 CGREY = "\33[90m"
 CGREEN = "\33[32m"
@@ -31,11 +34,17 @@ def wordle():
             break
 
 
+class MatchTypes (enum):
+    NotExists = 3
+    NotExists = 3
+    NotExists = 3
+
+
 def printRules():
     print(f"{CBOLD}LEGEND:{CEND}")
     print(f"{CITALIC}{CGREEN}\t you guessed right this letter!{CEND}")
     print(f"{CITALIC}{CYELLOW}\t you guessed right but in the wrong place...{CEND}")
-    print(f"{CITALIC}{CGREY}\t is not exists in the word.{CEND}")
+    print(f"{CITALIC}{CGREY}\t letter not exists in the word.{CEND}")
 
 
 # letters check
@@ -59,7 +68,8 @@ def matchedLetters(guess, wordOfTheDay):
 def pickWordOfTheDay():
     allWordsByDate = dict()
     nowDateFormatted = datetime.now().strftime("%b %d %Y")
-    with open("wordle_list.csv", newline="") as csvfile:
+    wordlist_file = path.join(path.dirname(__file__), "./wordle_list.csv")
+    with open(wordlist_file, newline="") as csvfile:
         wordlist = csv.reader(csvfile)
         for word in wordlist:
             allWordsByDate[word[0]] = word
